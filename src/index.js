@@ -1,7 +1,7 @@
-import ampScript from '../lib/ampScript'
+import amp from 'lib/ampScript'
 
-import fetch from '../lib/ssjsFetch'
-
-ampScript('Output("Hello World!")');
-
-fetch.Get("https://google.de");
+const msg = amp.run(`
+VAR @response
+SET @response = "Hello World!"
+`);
+Write(msg);

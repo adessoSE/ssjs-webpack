@@ -1,23 +1,23 @@
 {
-  "name": "ssjstools",
+  "name": "ssjs-webpack",
   "version": "1.0.0",
   "description": "",
-  "main": "src/arrayFunctions.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pdallmer/ssjsTools.git"
+    "url": "https://github.com/adessoSE/ssjs-webpack.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/pdallmer/ssjsTools/issues"
+    "url": "https://github.com/adessoSE/ssjs-webpack/issues"
   },
-  "homepage": "https://github.com/pdallmer/ssjsTools#readme",
+  "homepage": "https://github.com/adessoSE/ssjs-webpack",
   "devDependencies": {
     "@babel/preset-env": "^7.23.2",
     "babel-loader": "^9.1.3",

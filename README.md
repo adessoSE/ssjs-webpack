@@ -6,7 +6,8 @@ Webpack configuration that creates a sfmc compatible script.
     * array functions (map, reduce, forEach)
     * Object functions (keys)
 * modern JS syntax
-* ampScript loader
+* ampScriptLoader
+* htmlLoader
 * minification (optionally)
 ## Installation
 `git clone https://github.com/adessoSE/ssjs-webpack.git`
@@ -51,6 +52,27 @@ in `/src/index.js`:
 ```
 import ampFile from './lib/foo.amp'
 Write(ampFile.run());
+```
+### htmlLoader
+external html files can be imported and displayed.
+> **_NOTE:_** do not overwrite the `/templates/index.ejs`. It is required to build the SFMC compatible script.
+Example:
+create a new file `/templates/index.html`:
+```
+<html>
+    <head>
+        <title>Hello World!</title>
+    </head>
+    <body>
+        <h1 name="msg">Hello World!</h1>
+    </body>
+</html>
+```
+in `/src/index.js`:
+```
+import index from 'templates/index.html';
+index.display();
+
 ```
 ### minification
 By default minification is disabled. To enable it, go to `\webpack.config.js` and set 

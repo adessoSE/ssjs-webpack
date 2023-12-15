@@ -26,6 +26,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(html)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "./loaders/htmlLoader.js",
+            options: {},
+          },
+        ],
+      },
+      {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: [
@@ -58,6 +68,7 @@ module.exports = {
     alias: {
       polyfills: path.resolve(__dirname, "polyfills/"),
       lib: path.resolve(__dirname, "lib/"),
+      templates: path.resolve(__dirname, "templates/")
     },
   },
 };

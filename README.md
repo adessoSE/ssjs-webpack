@@ -10,11 +10,19 @@ Webpack configuration that creates a sfmc compatible script.
 * htmlLoader
 * minification (optionally)
 ## Installation
-`git clone https://github.com/adessoSE/ssjs-webpack.git`
-`cd ssjs-webpack`
-`npm install`
+the recommended way to install is by using the [yeoman-generator](https://www.npmjs.com/package/@adesso-se/generator-ssjs):
+```
+npm install --global yo
+npm install --global @adesso-se/generator-ssjs
+```
 ## Quickstart
-* run `npm run build` in the root folder of the project
+After Installation you can create a new ssjs project:
+```
+yo @adesso-se/ssjs
+cd <ssjs-project>
+npm install
+npm run build
+```
 * Log into Marketing Cloud
 * Create a new Landingpage
 * Copy the content of dist/index.html to the landing page

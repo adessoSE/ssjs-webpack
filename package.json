@@ -11,8 +11,15 @@
     "type": "git",
     "url": "https://github.com/adessoSE/ssjs-webpack.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "javascript",
+    "webpack",
+    "salesforce",
+    "ampscript",
+    "sfmc",
+    "ssjs"
+  ],
+  "author": "pdallmer",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/adessoSE/ssjs-webpack/issues"

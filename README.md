@@ -6,19 +6,20 @@ Webpack configuration that creates a sfmc compatible script.
     * array functions (map, reduce, forEach)
     * Object functions (keys)
 * modern JS syntax
+* environment variables
 * ampScriptLoader
 * htmlLoader
 * minification (optionally)
 ## Installation
-the recommended way to install is by using the [yeoman-generator](https://www.npmjs.com/package/@adesso-se/generator-ssjs):
+the recommended way to install is by using the [yeoman-generator](https://www.npmjs.com/package/generator-ssjs):
 ```
 npm install --global yo
-npm install --global @adesso-se/generator-ssjs
+npm install --global generator-ssjs
 ```
 ## Quickstart
 After Installation you can create a new ssjs project:
 ```
-yo @adesso-se/ssjs
+yo ssjs
 cd <ssjs-project>
 npm install
 npm run build
@@ -49,6 +50,16 @@ Write(foo());
 Its possible to import all polyfills  with a single import statement: `import polyfills`, or only the required polyfills, e.g. `import polyfills/array`, or `import polyfills/array/map`.
 ### modern js syntax
 The source files will be transpiled to ECMA-3 compatible js, so you can use modern js syntax like arrow functions, const, let or template literals.
+### environment variables
+Example:
+create a new file `/.env`:
+```
+FOO=BAR
+```
+in `/src/index.js`:
+```
+Write(Stringify(process.env.FOO));
+```
 ### ampScriptLoader 
 external ampScript files can be imported into the js source file. Both '.amp' and '.ampscript' will be recognized as ampScript import.
 Example: 

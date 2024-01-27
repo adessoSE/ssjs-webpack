@@ -2,6 +2,7 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlInlineScriptPlugin = require("html-inline-script-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: ["./src/index.js"],
@@ -16,6 +17,7 @@ module.exports = {
       inject: false,
     }),
     new HtmlInlineScriptPlugin(),
+    new Dotenv(),
   ],
   mode: "none",
   optimization: {
@@ -68,7 +70,7 @@ module.exports = {
     alias: {
       polyfills: path.resolve(__dirname, "polyfills/"),
       lib: path.resolve(__dirname, "lib/"),
-      templates: path.resolve(__dirname, "templates/")
+      templates: path.resolve(__dirname, "templates/"),
     },
   },
 };

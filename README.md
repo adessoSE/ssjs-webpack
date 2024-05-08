@@ -9,6 +9,7 @@ Webpack configuration that creates a sfmc compatible script.
 * environment variables
 * ampScriptLoader
 * htmlLoader
+* TypesScriptLoader
 * minification (optionally)
 ## Installation
 the recommended way to install is by using the [yeoman-generator](https://www.npmjs.com/package/generator-ssjs):
@@ -30,7 +31,7 @@ npm run build
 * publish the Landing page
 ## Documentation
 ### importing dependencies
-You can import local js and ampscript (wit ampScript loader) files as dependencies into you index.js. Node modules are also possible, although they have to be compatible with ssjs. It is recommended to single default exports, e.g. `export default(...)` and named imports, e.g. `import foo from 'bar'`.
+You can import local js and ampscript (with ampScript loader) files as dependencies into you index.js. Node modules are also possible, although they have to be compatible with ssjs. It is recommended to single default exports, e.g. `export default(...)` and named imports, e.g. `import foo from 'bar'`.
 #### Example:
 create a new file `/src/lib/foo.js`:
 ```
@@ -91,6 +92,21 @@ in `/src/index.js`:
 ```
 import index from 'templates/index.html';
 index.display();
+
+```
+### TypeScriptLoader
+import TypeScript into your js files, or use TypeScript exclusively.
+Example:
+create a new file `/src/add.ts`:
+```
+export function add(a: number, b: number) : number {
+    return a + b;
+}
+```
+in `/src/index.js`:
+```
+import { add } from "./add.ts";
+const result = add(1, 2); // -> 3
 
 ```
 ### minification

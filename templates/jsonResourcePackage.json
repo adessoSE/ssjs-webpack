@@ -1,0 +1,170 @@
+{
+    "appVersion": "248.0.29",
+    "id": "su7wnqksyy",
+    "name": "My Definition - June 20, 2024 at 1:57:24 PM",
+    "version": 1,
+    "modelVersion": "5",
+    "references": {
+        "cloudPageCollections/72517": [],
+        "codeResources/1698280": [
+            {
+                "identifier": "cloudPageCollections/72517",
+                "relationship": "required"
+            },
+            {
+                "identifier": "categories/72517",
+                "relationship": "required"
+            }
+        ],
+        "categories/72517": [
+            {
+                "identifier": "categories/61819",
+                "relationship": "required"
+            }
+        ],
+        "categories/61819": []
+    },
+    "input": [
+        {
+            "key": "cloudPages-domain",
+            "type": "entityPicker",
+            "label": "FIELD_DEFINITION_CLOUDPAGES_DOMAIN",
+            "meta": {
+                "entityType": "cloudpagesDomain"
+            },
+            "isSystem": true,
+            "entities": [
+                "codeResources/1698280"
+            ]
+        }
+    ],
+    "config": {
+        "preserveCategories": false,
+        "storeImagesAsReferences": false
+    },
+    "entities": {
+        "assets": {},
+        "attributeGroups": {},
+        "attributeRelationships": {},
+        "attributeSets": {},
+        "automations": {},
+        "categories": {
+            "61819": {
+                "issues": [],
+                "originID": "61819",
+                "originEID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "data": {
+                    "description": "The root folder for CloudPages",
+                    "categoryType": "cloudpages",
+                    "parentId": 0,
+                    "name": "CloudPages",
+                    "editable": 0,
+                    "extendable": 1
+                }
+            },
+            "72517": {
+                "issues": [],
+                "originID": "72517",
+                "originEID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "data": {
+                    "description": "",
+                    "categoryType": "cloudpages",
+                    "parentId": "{{mcpm#/entities/categories/61819/data/id}}",
+                    "name": "CloudpageCollectionNamePlaceholder",
+                    "editable": 1,
+                    "extendable": 0
+                }
+            }
+        },
+        "cloudPageCollections": {
+            "72517": {
+                "issues": [],
+                "originID": "72517",
+                "originEID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "data": {
+                    "name": "CloudpageCollectionNamePlaceholder",
+                    "description": ""
+                }
+            }
+        },
+        "codeResources": {
+            "1698280": {
+                "issues": [],
+                "originID": "1698280",
+                "originEID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "data": {
+                    "code": "{\"foo\": \"bar\"}",
+                    "collectionId": "{{mcpm#/entities/cloudPageCollections/72517/data/collectionId}}",
+                    "contentType": "application/json",
+                    "cultureCode": "en-US",
+                    "description": "",
+                    "domain": "{{mcpm:cloudPages-domain}}",
+                    "key": "eu44ir0cl5t",
+                    "name": "CodeResourceNamePlaceholder",
+                    "requiresSsl": true,
+                    "url": "https://xxxxxxxxxxxxxxxxxxxxxxxxxxxx.pub.sfmc-content.com/eu44ir0cl5t",
+                    "asset": {
+                        "assetType": {
+                            "id": 242,
+                            "name": "jsoncoderesource"
+                        },
+                        "data": {
+                            "site": {
+                                "content": "{\"url\":\"https://pub.s50.exacttarget.com/eu44ir0cl5t\"}"
+                            }
+                        },
+                        "description": "",
+                        "name": "CodeResourceNamePlaceholder",
+                        "category": {
+                            "id": "{{mcpm#/entities/categories/72517/data/id}}",
+                            "name": "CloudpageCollectionNamePlaceholder",
+                            "parentId": 61819
+                        },
+                        "content": "{\"foo\": \"bar\"}",
+                        "contentType": "application/json",
+                        "meta": {
+                            "cloudPages": {
+                                "publishDate": "2024-06-20 05:58:44.847"
+                            }
+                        },
+                        "customerKey": "b01e3bb5-821b-46e9-9421-f2c9e8ecc290"
+                    }
+                }
+            }
+        },
+        "dataExtensions": {},
+        "dataExtractActivities": {},
+        "dataFilterDefinitions": {},
+        "dataFilters": {},
+        "eventDefinitions": {},
+        "fileTransferActivities": {},
+        "importActivities": {},
+        "journeys": {},
+        "journeyTemplates": {},
+        "landingPages": {},
+        "microsites": {},
+        "micrositePages": {},
+        "micrositePageVersions": {},
+        "primaryLandingPages": {},
+        "queryActivities": {},
+        "registeredCustomActivities": {},
+        "scriptActivities": {},
+        "sendDefinitions": {},
+        "sharedDataExtensions": {},
+        "siteMapVersions": {},
+        "subscriberLists": {},
+        "verificationActivities": {}
+    },
+    "selectedEntities": {
+        "assets": [],
+        "attributeGroups": [],
+        "automations": [],
+        "cloudPageCollections": [
+            "72517"
+        ],
+        "dataExtensions": [],
+        "journeys": [],
+        "journeyTemplates": [],
+        "sharedDataExtensions": []
+    }
+}

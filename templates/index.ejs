@@ -1,4 +1,0 @@
-<%= (() => {
-  let script = htmlWebpackPlugin.tags.headTags.filter(tag => tag.tagName === 'script');
-  return `${script}`.replace(/(^.)script\s+defer>/gi, '$1script runat="server">Platform.Load("core", "1.1.1");');
-})() %>

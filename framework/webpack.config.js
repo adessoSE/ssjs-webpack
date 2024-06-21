@@ -27,7 +27,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "../loaders/htmlLoader.js",
+            loader: "./loaders/htmlLoader.js",
             options: {},
           },
         ],
@@ -48,7 +48,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "../loaders/ampScriptLoader.js",
+            loader: "./loaders/ampScriptLoader.js",
             options: {},
           },
         ],

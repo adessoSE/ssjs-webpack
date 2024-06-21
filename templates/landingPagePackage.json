@@ -1,0 +1,237 @@
+{
+    "appVersion": "248.0.29",
+    "id": "cs9nd3qs7h",
+    "name": "packageLP",
+    "version": 1,
+    "modelVersion": "5",
+    "references": {
+        "cloudPageCollections/73040": [],
+        "landingPages/1698639-3442": [
+            {
+                "identifier": "primaryLandingPages/1698639-3442",
+                "relationship": "required"
+            },
+            {
+                "identifier": "categories/38881",
+                "relationship": "required"
+            }
+        ],
+        "primaryLandingPages/1698639-3442": [
+            {
+                "identifier": "cloudPageCollections/73040",
+                "relationship": "required"
+            },
+            {
+                "identifier": "categories/38881",
+                "relationship": "required"
+            }
+        ],
+        "categories/38881": []
+    },
+    "input": [
+        {
+            "key": "cloudPages-domain",
+            "type": "entityPicker",
+            "label": "FIELD_DEFINITION_CLOUDPAGES_DOMAIN",
+            "meta": {
+                "entityType": "cloudpagesDomain"
+            },
+            "isSystem": true,
+            "entities": [
+                "primaryLandingPages/1698639-3442"
+            ]
+        }
+    ],
+    "config": {
+        "preserveCategories": false,
+        "storeImagesAsReferences": false
+    },
+    "entities": {
+        "assets": {},
+        "attributeGroups": {},
+        "attributeRelationships": {},
+        "attributeSets": {},
+        "automations": {},
+        "categories": {
+            "38881": {
+                "issues": [],
+                "originID": "38881",
+                "originEID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "data": {
+                    "description": "The root folder for assets",
+                    "categoryType": "asset",
+                    "parentId": 0,
+                    "name": "Content Builder",
+                    "editable": 0,
+                    "extendable": 1
+                }
+            }
+        },
+        "cloudPageCollections": {
+            "73040": {
+                "issues": [],
+                "originID": "73040",
+                "originEID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "data": {
+                    "name": "CloudpageCollectionNamePlaceholder",
+                    "description": ""
+                }
+            }
+        },
+        "codeResources": {},
+        "dataExtensions": {},
+        "dataExtractActivities": {},
+        "dataFilterDefinitions": {},
+        "dataFilters": {},
+        "eventDefinitions": {},
+        "fileTransferActivities": {},
+        "importActivities": {},
+        "journeys": {},
+        "journeyTemplates": {},
+        "landingPages": {
+            "1698639-3442": {
+                "issues": [],
+                "originID": "1698639-3442",
+                "originEID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "data": {
+                    "asset": {
+                        "assetType": {
+                            "id": 205,
+                            "name": "webpage"
+                        },
+                        "name": "LandingpageNamePlaceholder",
+                        "category": {
+                            "id": "{{mcpm#/entities/categories/38881/data/id}}"
+                        },
+                        "contentType": "text/html",
+                        "meta": {
+                            "globalStyles": {
+                                "isLocked": false,
+                                "body": {
+                                    "max-width": "1280px"
+                                }
+                            }
+                        },
+                        "views": {
+                            "html": {
+                                "thumbnail": {},
+                                "content": "<!DOCTYPE html>\n<html>\n<head>\n</head>\n<body>\n</body>\n</html>\n",
+                                "meta": {},
+                                "slots": {
+                                    "col1": {
+                                        "design": "<p style=\"font-family:arial;color:#ccc;font-size:11px;text-align:center;vertical-align:middle;font-weight:bold;padding:10px;margin:0;border:#ccc dashed 1px;\">Drop blocks or content here</p>",
+                                        "maxBlocks": 0,
+                                        "allowedBlocks": [],
+                                        "modelVersion": 2
+                                    }
+                                },
+                                "modelVersion": 2
+                            }
+                        }
+                    },
+                    "content": {
+                        "channelTypeId": 3,
+                        "contentType": "text/html",
+                        "isDefault": true,
+                        "isStaticContent": true,
+                        "name": "LandingpageNamePlaceholder",
+                        "siteId": "{{mcpm#/entities/primaryLandingPages/1698639-3442/data/definition/landingPageId}}"
+                    },
+                    "name": "LandingpageNamePlaceholder",
+                    "primaryId": "{{mcpm#/entities/primaryLandingPages/1698639-3442/data/id}}",
+                    "state": {
+                        "contentType": "text/html",
+                        "description": "",
+                        "name": "LandingpageNamePlaceholder",
+                        "siteId": "{{mcpm#/entities/primaryLandingPages/1698639-3442/data/definition/landingPageId}}"
+                    }
+                }
+            }
+        },
+        "microsites": {},
+        "micrositePages": {},
+        "micrositePageVersions": {},
+        "primaryLandingPages": {
+            "1698639-3442": {
+                "issues": [],
+                "originID": "1698639-3442",
+                "originEID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "data": {
+                    "asset": {
+                        "assetType": {
+                            "id": 205,
+                            "name": "webpage"
+                        },
+                        "name": "LandingpageNamePlaceholder",
+                        "category": {
+                            "id": "{{mcpm#/entities/categories/38881/data/id}}"
+                        },
+                        "contentType": "text/html",
+                        "meta": {
+                            "globalStyles": {
+                                "isLocked": false,
+                                "body": {
+                                    "max-width": "1280px"
+                                }
+                            }
+                        },
+                        "views": {
+                            "html": {
+                                "thumbnail": {},
+                                "content": "<!DOCTYPE html>\n<html>\n<head>\n</head>\n<body>\n</body>\n</html>\n",
+                                "meta": {},
+                                "slots": {},
+                                "modelVersion": 2
+                            }
+                        }
+                    },
+                    "content": {
+                        "channelTypeId": 3,
+                        "contentType": "text/html",
+                        "isDefault": true,
+                        "isStaticContent": true,
+                        "name": "LandingpageNamePlaceholder"
+                    },
+                    "definition": {
+                        "collectionId": "{{mcpm#/entities/cloudPageCollections/73040/data/collectionId}}",
+                        "description": "",
+                        "domain": "{{mcpm:cloudPages-domain}}",
+                        "isNoFollow": false,
+                        "isNoIndex": false,
+                        "key": "40gdkcw0anw",
+                        "name": "LandingpageNamePlaceholder",
+                        "pageTypeId": 3,
+                        "requiresSsl": true,
+                        "url": "https://xxxxxxxxxxxxxxxxxxxxxxxxxxxx.pub.sfmc-content.com/40gdkcw0anw"
+                    },
+                    "name": "LandingpageNamePlaceholder",
+                    "state": {
+                        "contentType": "text/html",
+                        "description": "",
+                        "name": "LandingpageNamePlaceholder"
+                    }
+                }
+            }
+        },
+        "queryActivities": {},
+        "registeredCustomActivities": {},
+        "scriptActivities": {},
+        "sendDefinitions": {},
+        "sharedDataExtensions": {},
+        "siteMapVersions": {},
+        "subscriberLists": {},
+        "verificationActivities": {}
+    },
+    "selectedEntities": {
+        "assets": [],
+        "attributeGroups": [],
+        "automations": [],
+        "cloudPageCollections": [
+            "73040"
+        ],
+        "dataExtensions": [],
+        "journeys": [],
+        "journeyTemplates": [],
+        "sharedDataExtensions": []
+    }
+}

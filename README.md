@@ -111,7 +111,7 @@ const result = add(1, 2); // -> 3
 ## Configuration
 You can configure the project in `/ssjs.config.js`. 
 ### package
-Setting `package: true` will create a Package for the SFMC package manager. The package contains a Cloudpage Collection and a single JSON Code Resource, with the transpiled code. This option is useful for deployments, after the code has been tested.\
+Setting `package: true` will create a Package for the SFMC package manager. The package contains a Cloudpage Collection and a single JSON Code Resource or landingpage (if html loader was used). This option is useful for deployments, after the code has been tested.\
 **default: false** 
 ### html
 Setting `html: true` will wrap the transpiled js in a sfmc compatible html.

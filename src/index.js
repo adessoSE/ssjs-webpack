@@ -1,5 +1,7 @@
-import 'polyfills';
+import amp from 'lib/ampScript'
 
-Write(Stringify(
-    [1,2,3,4,5,6,7,8,9].map(c => c + 1)
-))
+const msg = amp.run(`
+VAR @response
+SET @response = "Hello World!"
+`);
+Write(msg);

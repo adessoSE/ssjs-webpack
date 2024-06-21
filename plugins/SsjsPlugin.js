@@ -1,4 +1,5 @@
 const jsonResourcePackageTemplate = require("../templates/jsonResourcePackage.json");
+const landingPagePackageTemplate = require("../templates/landingPagePackage.json");
 
 class SsjsPlugin {
   static defaultOptions = {
@@ -33,7 +34,14 @@ class SsjsPlugin {
     const pluginName = SsjsPlugin.name;
     const { webpack } = compiler;
     const { Compilation } = webpack;
+    let isLandingPage = false;
     compiler.hooks.thisCompilation.tap(pluginName, (compilation) => {
+      compilation.hooks.buildModule.tap(pluginName, (module) => {
+        if (module.resource) {
+          isLandingPage |= /\.html$/.test(module.resource);
+        }
+      });
+
       compilation.hooks.processAssets.tap(
         {
           name: pluginName,
@@ -56,7 +64,7 @@ class SsjsPlugin {
             if (this.options.removeRawJS) {
               delete compilation.assets[filename];
             }
-            if (this.options.package) {
+            if (this.options.package && !isLandingPage) {
               const output = jsonResourcePackageTemplate;
               output.name = this.options.packageName;
               output.entities.codeResources["1698280"].data.code = newContent;
@@ -68,6 +76,24 @@ class SsjsPlugin {
                 .replace(
                   /CodeResourceNamePlaceholder/g,
                   this.options.codeResourceName
+                );
+              compilation.assets[`${this.options.packageName}.json`] = {
+                source: () => jsonOutput,
+                size: () => Buffer.byteLength(jsonOutput, "utf8"),
+              };
+            }
+            if (this.options.package && isLandingPage) {
+              const output = landingPagePackageTemplate;
+              output.name = this.options.packageName;
+              output.entities.landingPages["1698639-3442"].data.asset.views.html.content = newContent;
+              const jsonOutput = JSON.stringify(output)
+                .replace(
+                  /CloudpageCollectionNamePlaceholder/g,
+                  this.options.cloudpageCollectionName
+                )
+                .replace(
+                  /LandingpageNamePlaceholder/g,
+                  this.options.htmlName
                 );
               compilation.assets[`${this.options.packageName}.json`] = {
                 source: () => jsonOutput,

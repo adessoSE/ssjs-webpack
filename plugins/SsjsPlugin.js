@@ -59,7 +59,7 @@ class SsjsPlugin {
             if (this.options.package) {
               const output = jsonResourcePackageTemplate;
               output.name = this.options.packageName;
-              output.entities.codeResources["1698280"].data.code = content;
+              output.entities.codeResources["1698280"].data.code = newContent;
               const jsonOutput = JSON.stringify(output)
                 .replace(
                   /CloudpageCollectionNamePlaceholder/g,

@@ -54,14 +54,14 @@ class SsjsPlugin {
             let newContent = this.options.replacements.reduce((acc, curr) => {
               return acc.replace(curr.pattern, curr.replacement);
             }, content);
-            if (this.options.html) {
+            if (this.options.html && this.options.html != 'false') {
               newContent = `<script runat="server">Platform.Load("core", "1.1.1");${newContent}</script>`;
               compilation.assets[this.options.htmlName] = {
                 source: () => newContent,
                 size: () => Buffer.byteLength(newContent, "utf8"),
               };
             }
-            if (this.options.removeRawJS) {
+            if (this.options.removeRawJS && this.options.removeRawJS != 'false') {
               delete compilation.assets[filename];
             }
             if (this.options.package && !isLandingPage) {

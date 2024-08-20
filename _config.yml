@@ -1,0 +1,12 @@
+title: The SSJS Framework
+description: Framework that creates a sfmc compatible script from modern Javascript. 
+theme: just-the-docs
+
+search_enabled: false
+
+
+callouts:
+  warning:
+    title: Warning
+    color: red
+

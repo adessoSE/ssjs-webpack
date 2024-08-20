@@ -5,7 +5,7 @@ nav_order: 7
 parent: Documentation
 ---
 
-### TypeScriptLoader
+### Typescript Loader
 import TypeScript into your js files, or use TypeScript exclusively.
 Example:
 create a new file `/src/add.ts`:

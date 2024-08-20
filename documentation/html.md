@@ -5,7 +5,7 @@ nav_order: 6
 parent: Documentation
 ---
 
-### htmlLoader
+### HTML Loader
 external html files can be imported and displayed.
 > **_NOTE:_** do not overwrite the `/templates/index.ejs`. It is required to build the SFMC compatible script.
 Example:

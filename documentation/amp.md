@@ -5,7 +5,7 @@ nav_order: 5
 parent: Documentation
 ---
 
-### ampScriptLoader 
+### AmpScript Loader
 external ampScript files can be imported into the js source file. Both '.amp' and '.ampscript' will be recognized as ampScript import.
 Example: 
 create a new file `/src/lib/foo.amp`:

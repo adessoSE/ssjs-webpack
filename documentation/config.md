@@ -6,7 +6,10 @@ parent: Documentation
 ---
 
 ## Configuration
-You can configure the project in `/ssjs.config.js`. 
+You can configure the project in `/ssjs.config.js`.
+### output
+This is the name of the output file.
+**default: "main.js"** 
 ### package
 Setting `package: true` will create a Package for the SFMC package manager. The package contains a Cloudpage Collection and a single JSON Code Resource or landingpage (if html loader was used). This option is useful for deployments, after the code has been tested.\
 **default: false** 
@@ -28,18 +31,6 @@ This option sets the output name of the cloudpage collection file file (if packa
 ### codeResourceName
 This option sets the output name of the code resource file file (if package is set to true).
 **default: ssjs-code-resource** 
-### replacements
-This option defines replacement patterns for the output file. This can be useful if standard webpack loaders add code that is not compatible with SSJS.
-**default:** 
-```js
-[
-    {
-      pattern: /JSON.strinigfy/gi,
-      replacement: "Stringify",
-    },
-    {
-      pattern: /JSON.parse/gi,
-      replacement: "Platform.Function.ParseJSON",
-    },
-  ]
-  ```
+### dynamicPolyfills
+This option defines if dynamic polyfills are used. This is currently only available in alpha releases. 
+**default: false** 

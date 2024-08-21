@@ -137,7 +137,7 @@ This option defines replacement patterns for the output file. This can be useful
 ```js
 [
     {
-      pattern: /JSON.strinigfy/gi,
+      pattern: /JSON.stringify/gi,
       replacement: "Stringify",
     },
     {

@@ -1,14 +1,3 @@
-import 'polyfills'
-
-[
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10
-].map((a) => { return a * a })
+const a = {foo: 1};
+console.log(Object.keys({foo: 1}));
+console.log(Object.values(a))

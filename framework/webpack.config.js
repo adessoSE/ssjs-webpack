@@ -4,11 +4,12 @@ const Dotenv = require("dotenv-webpack");
 const SsjsPlugin = require("../plugins/SsjsPlugin");
 const SsjsConfig = require("../ssjs.config.js");
 
+
 module.exports = (env) => {
   return {
     entry: ["./src/index.js"],
     output: {
-      filename: "main.js",
+      filename: SsjsConfig.output ,
       path: path.resolve(__dirname, "../dist"),
       clean: true,
     },

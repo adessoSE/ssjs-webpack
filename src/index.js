@@ -1,7 +1,14 @@
-import amp from 'lib/ampScript'
+import 'polyfills'
 
-const msg = amp.run(`
-VAR @response
-SET @response = "Hello World!"
-`);
-Write(msg);
+[
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+].map((a) => { return a * a })

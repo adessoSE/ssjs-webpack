@@ -1,5 +1,3 @@
-const jsonResourcePackageTemplate = require("../templates/jsonResourcePackage.json");
-const landingPagePackageTemplate = require("../templates/landingPagePackage.json");
 
 class SsjsPlugin {
   static defaultOptions = {
@@ -18,7 +16,7 @@ class SsjsPlugin {
       {
         pattern: /JSON.parse/gi,
         replacement: "Platform.Function.ParseJSON",
-      },
+      }
     ],
   };
   constructor(options = {}) {
@@ -52,6 +50,8 @@ class SsjsPlugin {
             const asset = compilation.assets[filename];
             const content = asset.source();
             let newContent = this.options.replacements.reduce((acc, curr) => {
+              console.log(acc);
+              console.log(acc.replace(curr.pattern, curr.replacement))
               return acc.replace(curr.pattern, curr.replacement);
             }, content);
             if (this.options.html) {
@@ -65,6 +65,7 @@ class SsjsPlugin {
               delete compilation.assets[filename];
             }
             if (this.options.package && !isLandingPage) {
+              const jsonResourcePackageTemplate = require("../templates/jsonResourcePackage.json");
               const output = jsonResourcePackageTemplate;
               output.name = this.options.packageName;
               output.entities.codeResources["1698280"].data.code = newContent;
@@ -83,6 +84,7 @@ class SsjsPlugin {
               };
             }
             if (this.options.package && isLandingPage) {
+              const landingPagePackageTemplate = require("../templates/landingPagePackage.json");
               const output = landingPagePackageTemplate;
               output.name = this.options.packageName;
               output.entities.landingPages["1698639-3442"].data.asset.views.html.content = newContent;

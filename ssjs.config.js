@@ -1,6 +1,6 @@
 const SsjsConfig = {
   //package: false,
-  //html: true,
+  //html: false,
   //removeRawJS: true,
   //htmlName: "index.html",
   //packageName: "ssjs-package",

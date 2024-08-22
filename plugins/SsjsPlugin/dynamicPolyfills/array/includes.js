@@ -1,6 +1,5 @@
 const { parse } = require('@babel/parser');
 
-const arrayIncludes = parse(`
 function arrayIncludes(array, val) {
   for (i = 0; i < array.length; i++) {
     if (array[i] == val) {
@@ -9,6 +8,5 @@ function arrayIncludes(array, val) {
   }
   return false;
 };
-`);
 
-module.exports = arrayIncludes;
+module.exports = parse(arrayIncludes.toString());

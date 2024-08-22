@@ -1,6 +1,5 @@
 const { parse } = require('@babel/parser');
 
-const objectValues = parse(`
 function objectValues(obj) {
     var values = [];
     for (var prop in obj) {
@@ -10,6 +9,5 @@ function objectValues(obj) {
     }
     return values;
   };
-`);
 
-module.exports = objectValues;
+module.exports = parse(objectValues.toString());

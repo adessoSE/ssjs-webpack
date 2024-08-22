@@ -1,3 +1,7 @@
-const a = {foo: 1};
-console.log(Object.keys({foo: 1}));
-console.log(Object.values(a))
+import amp from 'lib/ampScript'
+
+const msg = amp.run(`
+VAR @response
+SET @response = "Hello World!"
+`);
+Write(msg);

@@ -1,6 +1,5 @@
 const { parse } = require('@babel/parser');
 
-const arrayReduce = parse(`
 function arrayReduce(array, callbackFn, initialValue) {
   var accumulator = initialValue;
   for (var i = 0; i < array.length; i++) {
@@ -12,6 +11,5 @@ function arrayReduce(array, callbackFn, initialValue) {
   }
   return accumulator;
 };
-`);
 
-module.exports = arrayReduce;
+module.exports = parse(arrayReduce.toString());

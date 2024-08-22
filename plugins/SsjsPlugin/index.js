@@ -40,16 +40,15 @@ class SsjsPlugin {
         },
         () => {
           replacements(compilation, this.options);
+          if(this.options.dynamicPolyfills) {
+            dynamicPolyfills(compilation, this.options);
+          }
           if (this.options.html && this.options.html != 'false') {
             htmlAsset(compilation, this.options)
           }
           if (this.options.package) {
             packageAsset(compilation, this.options);
           }
-          if(this.options.dynamicPolyfills) {
-            dynamicPolyfills(compilation, this.options);
-          }
-
           if (this.options.removeRawJS && this.options.removeRawJS != 'false') {
             delete compilation.assets[this.options.output];
           }

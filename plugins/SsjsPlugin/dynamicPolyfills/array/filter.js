@@ -1,6 +1,6 @@
 const { parse } = require('@babel/parser');
 
-const arrayFilter = parse(`
+
 function arrayFilter(array, callbackFn) {
   var arr = [];
   for (var i = 0; i < array.length; i++) {
@@ -11,6 +11,4 @@ function arrayFilter(array, callbackFn) {
   return arr;
 };
 
-`);
-
-module.exports = arrayFilter;
+module.exports = parse(arrayFilter.toString());

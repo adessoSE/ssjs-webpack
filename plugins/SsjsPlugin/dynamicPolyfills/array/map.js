@@ -1,6 +1,5 @@
 const { parse } = require('@babel/parser');
 
-const arrayMap = parse(`
 function arrayMap(array, callbackFn) {
   var arr = [];
   for (var i = 0; i < array.length; i++) {
@@ -8,6 +7,5 @@ function arrayMap(array, callbackFn) {
   }
   return arr;
 };
-`);
 
-module.exports = arrayMap;
+module.exports = parse(arrayMap.toString());

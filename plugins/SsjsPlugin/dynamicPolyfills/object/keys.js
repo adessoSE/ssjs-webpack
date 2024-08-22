@@ -1,15 +1,13 @@
 const { parse } = require('@babel/parser');
 
-const objectKeys = parse(`
 function objectKeys(obj) {
-    var values = [];
-    for (var prop in obj) {
-      if (obj.hasOwnProperty(prop) && prop != "_type") {
-        values.push(prop);
-      }
+  var values = [];
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop) && prop != "_type") {
+      values.push(prop);
     }
-    return values;
-  };
-`);
+  }
+  return values;
+};
 
-module.exports = objectKeys;
+module.exports = parse(objectKeys.toString());

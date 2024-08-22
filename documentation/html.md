@@ -6,8 +6,9 @@ parent: Documentation
 ---
 
 ### HTML Loader
-external html files can be imported and displayed.
-> **_NOTE:_** do not overwrite the `/templates/index.ejs`. It is required to build the SFMC compatible script.
+External HTML files can be imported and displayed. This can be useful if you are building a landing page and want to execute some SSJS code before loading the page, or if you want to display different pages based on the outcome of the SSJS code. There is no native templating language available. To use personalization strings, you need to set AMPscript variables and reference them in the HTML.
+
+
 Example:
 create a new file `/templates/index.html`:
 ```

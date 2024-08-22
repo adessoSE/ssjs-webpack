@@ -10,7 +10,7 @@ parent: Documentation
 {: .note }
 This is an experimental feature. To use it, install the alpha version by running `npm install --global generator-ssjs@alpha`.
 
-Dynamic Polyfills enable you to use modern JS functions without importing the polyfills. Instead the polyfills will be added from the plugin if the functions are detected. the dynamic polyfills also don't break the core lobrary, as they will transform the functions to prevent updating the prototype. 
+Dynamic Polyfills enable you to use modern JS functions without importing the polyfills. Instead the polyfills will be added from the plugin if the functions are detected. the dynamic polyfills also don't break the core library, as they will transform the functions to prevent updating the prototype. 
 
 **example:**
 input:

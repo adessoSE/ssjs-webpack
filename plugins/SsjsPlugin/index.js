@@ -1,4 +1,3 @@
-const replacements = require('./replacements');
 const htmlAsset = require('./htmlAsset');
 const packageAsset = require('./packageAsset');
 const dynamicPolyfills = require('./dynamicPolyfills'); 
@@ -13,7 +12,6 @@ class SsjsPlugin {
     packageName: "ssjs-package",
     cloudpageCollectionName: "ssjs-cloudpage-collection",
     codeResourceName: "ssjs-code-resource",
-    replacements: [],
   };
   constructor(options = {}) {
     this.options = {
@@ -39,7 +37,6 @@ class SsjsPlugin {
           stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE_COMPATIBILITY,
         },
         () => {
-          replacements(compilation, this.options);
           if(this.options.dynamicPolyfills) {
             dynamicPolyfills(compilation, this.options);
           }

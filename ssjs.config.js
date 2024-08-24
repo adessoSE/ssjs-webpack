@@ -7,7 +7,6 @@ const SsjsConfig = {
   packageName: "ssjs-package",
   cloudpageCollectionName: "ssjs-cloudpage-collection",
   codeResourceName: "ssjs-code-resource",
-  replacements: [],
   dynamicPolyfills: true
 };
 

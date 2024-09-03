@@ -1,16 +1,12 @@
-const htmlAsset = require("./htmlAsset");
 
-function packageAsset(compilation, options) {
-    if (!compilation.assets[options.htmlName]) {
-        htmlAsset(compilation, options);
-    }
-    const html = compilation.assets[options.htmlName].source();
+function packageAsset(js, options) {
+    const html = `<script runat="server">Platform.Load("core", "1.1.1");${js}</script>`;
     if (!options.isLandingPage) {
         const jsonResourcePackageTemplate = require("../../templates/jsonResourcePackage.json");
         const output = jsonResourcePackageTemplate;
         output.name = options.packageName;
         output.entities.codeResources["1698280"].data.code = html;
-        const jsonOutput = JSON.stringify(output)
+        return JSON.stringify(output)
             .replace(
                 /CloudpageCollectionNamePlaceholder/g,
                 options.cloudpageCollectionName
@@ -19,17 +15,13 @@ function packageAsset(compilation, options) {
                 /CodeResourceNamePlaceholder/g,
                 options.codeResourceName
             );
-        compilation.assets[`${options.packageName}.json`] = {
-            source: () => jsonOutput,
-            size: () => Buffer.byteLength(jsonOutput, "utf8"),
-        };
     }
     else {
         const landingPagePackageTemplate = require("../../templates/landingPagePackage.json");
         const output = landingPagePackageTemplate;
         output.name = options.packageName;
         output.entities.landingPages["1698639-3442"].data.asset.views.html.content = html;
-        const jsonOutput = JSON.stringify(output)
+        return JSON.stringify(output)
             .replace(
                 /CloudpageCollectionNamePlaceholder/g,
                 options.cloudpageCollectionName
@@ -38,13 +30,6 @@ function packageAsset(compilation, options) {
                 /LandingpageNamePlaceholder/g,
                 options.htmlName
             );
-        compilation.assets[`${options.packageName}.json`] = {
-            source: () => jsonOutput,
-            size: () => Buffer.byteLength(jsonOutput, "utf8"),
-        };
-    }
-    if (!options.html) {
-        delete compilation.assets[options.htmlName];
     }
 }
 

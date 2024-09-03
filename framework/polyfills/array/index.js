@@ -1,0 +1,13 @@
+import './every'
+import './filter'
+import './find'
+import './forEach'
+import './includes'
+import './indexOf'
+import './isArray'
+import './lastIndexOf'
+import './map'
+import './reduce'
+import './reduceRight'
+import './some'
+

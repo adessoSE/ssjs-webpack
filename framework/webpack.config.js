@@ -1,7 +1,7 @@
 const path = require("path");
 
 const Dotenv = require("dotenv-webpack");
-const SsjsPlugin = require("../plugins/SsjsPlugin");
+const SsjsPlugin = require("./plugins/SsjsPlugin");
 const SsjsConfig = require("../ssjs.config.js");
 
 
@@ -13,7 +13,7 @@ module.exports = (env) => {
       path: path.resolve(__dirname, "../dist"),
       clean: true,
     },
-    plugins: [new Dotenv(), new SsjsPlugin({...SsjsConfig, ...env})],
+    plugins: [new SsjsPlugin({...SsjsConfig, ...env}), new Dotenv()],
     mode: "none",
     optimization: {
       concatenateModules: true,
@@ -26,7 +26,7 @@ module.exports = (env) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "./loaders/htmlLoader.js",
+              loader: "./framework/loaders/htmlLoader.js",
               options: {},
             },
           ],
@@ -47,7 +47,7 @@ module.exports = (env) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "./loaders/ampScriptLoader.js",
+              loader: "./framework/ampScriptLoader.js",
               options: {},
             },
           ],
@@ -62,9 +62,9 @@ module.exports = (env) => {
     resolve: {
       extensions: ["*", ".js"],
       alias: {
-        polyfills: path.resolve(__dirname, "../polyfills/"),
-        lib: path.resolve(__dirname, "../lib/"),
-        templates: path.resolve(__dirname, "../templates/"),
+        polyfills: path.resolve(__dirname, "./polyfills/"),
+        lib: path.resolve(__dirname, "./lib/"),
+        templates: path.resolve(__dirname, "./templates/"),
       },
     },
   };

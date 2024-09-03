@@ -20,10 +20,10 @@ input:
 
 output:
 ```javascript
-function arrayMap(array, callbackFn) {
+function arrayMap(callbackFn) {
   var arr = [];
-  for (var i = 0; i < array.length; i++) {
-    arr.push(callbackFn(array[i], i, array));
+  for (var i = 0; i < this.length; i++) {
+    arr.push(callbackFn(this[i], i, this));
   }
   return arr;
 }
@@ -31,7 +31,7 @@ function arrayMap(array, callbackFn) {
 /******/(function () {
   // webpackBootstrap
   var __webpack_exports__ = {};
-  arrayMap([1, 2, 3], function (e) {
+  arrayMap.call([1, 2, 3], function (e) {
     return e * 2;
   });
   /******/
@@ -40,13 +40,27 @@ function arrayMap(array, callbackFn) {
 
 **available polyfills:**
 * array
-    * filter
-    * forEach
-    * includes
-    * map
-    * reduce
+	* every
+	* filter
+	* find
+	* forEach
+	* includes
+	* indexOf
+	* isArray
+	* lastIndexOf
+	* map
+	* reduce
+	* reduceRight
+	* some
 * object
-    * keys
-    * values
+	* create
+	* defineProperty
+	* defineProperties
+	* keys
+	* values
+* string
+	* endsWith
+	* startsWith
+	* trim
 
 

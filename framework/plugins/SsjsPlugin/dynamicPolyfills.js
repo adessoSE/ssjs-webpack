@@ -57,6 +57,7 @@ const polyfills = [
     'array/filter',
     'array/find',
     'array/forEach',
+    'array/from',
     'array/includes',
     'array/indexOf',
     'array/isArray',
@@ -65,12 +66,16 @@ const polyfills = [
     'array/reduce',
     'array/reduceRight',
     'array/some',
+    'array/splice',
     'object/create',
-    'object/defineProperty',
     'object/defineProperties',
     'object/keys',
     'object/values',
+    'string/codePointAt',
     'string/endsWith',
+    'string/padStart',
+    'string/padEnd',
+    'string/repeat',
     'string/startsWith',
     'string/trim',
 ].map(polyfill => loadPolyfill(polyfill));
@@ -99,31 +104,20 @@ function dynamicPolyfills(js) {
                             ast.program.body.unshift(polyfill.functionDeclaration)
                         }
                         polyfill.import = true;
-                        const object = path.node.callee.object;
-                        if (!(types.isIdentifier(object) && ["Array", "Object", "String", "Number"].includes(object.name))) {
-                            const newCallee = types.memberExpression(types.identifier(polyfill.replacement), types.identifier('call'));
-                            const newArguments = [path.node.callee.object, ...path.node.arguments];
-                            path.replaceWith(
-                                types.callExpression(
-                                    newCallee,
-                                    newArguments
-                                )
-                            );
-                        } else {
-                            path.replaceWith(
-                                types.callExpression(
-                                    types.identifier(polyfill.replacement),
-                                    [...path.node.arguments]
-                                )
-                            );
-                        }
-
+                        const newCallee = types.memberExpression(types.identifier(polyfill.replacement), types.identifier('call'));
+                        const newArguments = [path.node.callee.object, ...path.node.arguments];
+                        path.replaceWith(
+                            types.callExpression(
+                                newCallee,
+                                newArguments
+                            )
+                        );
                     }
                 })
         }
     })
     const newContent = generate(ast).code;
-    return newContent;
+    return `try{${newContent}}catch(err){Write(Stringify(err))}`;
 }
 
 module.exports = dynamicPolyfills;

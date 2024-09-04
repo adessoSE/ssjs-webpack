@@ -7,7 +7,8 @@ const SsjsConfig = {
   packageName: "ssjs-package",
   cloudpageCollectionName: "ssjs-cloudpage-collection",
   codeResourceName: "ssjs-code-resource",
-  dynamicPolyfills: true
+  dynamicPolyfills: true,
+  minify: true
 };
 
 module.exports = SsjsConfig;

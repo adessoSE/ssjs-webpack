@@ -2,6 +2,7 @@ const htmlAsset = require('./htmlAsset');
 const packageAsset = require('./packageAsset');
 const dynamicPolyfills = require('./dynamicPolyfills');
 const { sources } = require('webpack');
+const minify = require('./minify');
 
 
 class SsjsPlugin {
@@ -14,6 +15,8 @@ class SsjsPlugin {
     packageName: "ssjs-package",
     cloudpageCollectionName: "ssjs-cloudpage-collection",
     codeResourceName: "ssjs-code-resource",
+    dynamicPolyfills: false,
+    minify: false
   };
   constructor(options = {}) {
     this.options = {
@@ -42,11 +45,14 @@ class SsjsPlugin {
             let js = compilation.assets[asset].source();
             if (this.options.dynamicPolyfills) {
               js = dynamicPolyfills(js);
-              compilation.updateAsset(
-                asset,
-                new sources.RawSource(js)
-              );
             }
+            if (this.options.minify && this.options.minify != 'false') {
+              js = minify(js);
+            }
+            compilation.updateAsset(
+              asset,
+              new sources.RawSource(js)
+            );
             if (this.options.html && this.options.html != 'false') {
               compilation.emitAsset(
                 this.options.htmlName,

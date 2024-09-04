@@ -6,7 +6,6 @@ function minify(js) {
     return generate(ast, { 
         comments: false,
         compact: true,
-        minified: true
     }).code
 }
 

@@ -10,8 +10,8 @@ External HTML files can be imported and displayed. This can be useful if you are
 
 
 Example:
-create a new file `/templates/index.html`:
-```
+create a new file `/src/templates/index.html`:
+```html
 <html>
     <head>
         <title>Hello World!</title>
@@ -22,7 +22,7 @@ create a new file `/templates/index.html`:
 </html>
 ```
 in `/src/index.js`:
-```
+```js
 import index from 'templates/index.html';
 index.display();
 

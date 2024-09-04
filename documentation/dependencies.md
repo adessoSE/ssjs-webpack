@@ -5,20 +5,29 @@ nav_order: 1
 parent: Documentation
 ---
 
-### importing dependencies
-You can import local js and ampscript (with ampScript loader) files as dependencies into you index.js. Node modules are also possible, although they have to be compatible with ssjs. It is recommended to single default exports, e.g. `export default(...)` and named imports, e.g. `import foo from 'bar'`.
-#### Example:
-create a new file `/src/lib/foo.js`:
-```
-export default({
-    foo: () => {
-        return 'bar';
-    }
-});
-```
-in `/src/index.js`:
-```
-import foo from './src/lib/foo.js'
+### Importing Dependencies
+Use ES6 module syntax to handle dependencies. Check the [webpack documentation](https://webpack.js.org/api/module-methods/) for more details.
 
-Write(foo());
+**import** \
+Statically import the exports of another module.
+```js
+import MyModule from './my-module.js';
+import { NamedExport } from './other-module.js';
+import './my-polyfills.js';
 ```
+
+**export**\
+Export anything as a default or named export.
+```js
+// Named exports
+export var Count = 5;
+export function Multiply(a, b) {
+  return a * b;
+}
+
+// Default export
+export default {
+  // Some data...
+};
+```
+

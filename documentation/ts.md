@@ -6,7 +6,7 @@ parent: Documentation
 ---
 
 ### Typescript Loader
-import TypeScript into your js files, or use TypeScript exclusively.
+Import TypeScript into your js files, or use TypeScript exclusively.
 Example:
 create a new file `/src/add.ts`:
 ```

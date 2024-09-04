@@ -12,7 +12,8 @@ This is an experimental feature. To use it, install the alpha version by running
 
 Dynamic Polyfills enable you to use modern JS functions without importing the polyfills. Instead the polyfills will be added from the plugin if the functions are detected. the dynamic polyfills also don't break the core library, as they will transform the functions to prevent updating the prototype. 
 
-**example:**
+**Example:**
+
 input:
 ```javascript
 [1,2,3].map(e => e * 2);
@@ -40,27 +41,30 @@ function arrayMap(callbackFn) {
 
 **available polyfills:**
 * array
-	* every
-	* filter
-	* find
-	* forEach
-	* includes
-	* indexOf
-	* isArray
-	* lastIndexOf
-	* map
-	* reduce
-	* reduceRight
-	* some
+    * every
+    * filter
+    * find
+    * forEach
+    * from
+    * includes
+    * indexOf
+    * isArray
+    * lastIndexOf
+    * map
+    * reduce
+    * reduceRight
+    * some
+    * splice
 * object
-	* create
-	* defineProperty
-	* defineProperties
-	* keys
-	* values
+    * create
+    * defineProperties
+    * keys
+    * values
 * string
-	* endsWith
-	* startsWith
-	* trim
-
-
+    * codePointAt
+    * endsWith
+    * padStart
+    * padEnd
+    * repeat
+    * startsWith
+    * trim

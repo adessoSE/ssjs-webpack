@@ -24,4 +24,4 @@ var val = 1;
 ```
 
 {: .note }
-this will only transform syntax features, but not add additional functionality to your code. The second example transforms the arrow function but is not aware, that `array.prototype.map` is not a function in SSJS. To use the map function you have to include the [polyfill]({{ site.baseurl }}{% link documentation/polyfills.md %}).
+this will only transform syntax features, but not add additional functionality to your code. The second example transforms the arrow function but is not aware, that `array.prototype.map` is not a function in SSJS. To use the map function you have to include the [polyfill]({% link documentation/polyfills.md %}).

@@ -1,4 +1,5 @@
 import './array'
+import './date'
 import './object'
 import './string'
 import './number'

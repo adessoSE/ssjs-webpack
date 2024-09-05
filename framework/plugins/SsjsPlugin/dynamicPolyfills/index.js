@@ -2,7 +2,7 @@
 const traverse = require('@babel/traverse').default;
 const { parse } = require('@babel/parser');
 const generate = require('@babel/generator').default;
-const { assignmentIsPolyfill, callExpressionIsPolyfill, assignmentIsFunctionsDeclaration, callerClass, callerInstance } = require('./types');
+const { assignmentIsPolyfill, callExpressionIsPolyfill, assignmentIsFunctionsDeclaration, callerClass, callerInstance, callExpressionIsPolyfillDeclaration } = require('./types');
 const { loadPolyfillReplacement, transformPolyfillCall } = require('./transformer');
 
 
@@ -22,7 +22,10 @@ function dynamicPolyfills(js) {
             }
         },
         CallExpression(path) {
-            if (callExpressionIsPolyfill(path.node)) {
+            if(callExpressionIsPolyfillDeclaration(path.node)) {
+                path.remove();
+            }
+            else if (callExpressionIsPolyfill(path.node)) {
                 const functionName = path.node.callee.property.name;
                 const replacements = loadPolyfillReplacement(functionName);
                 if (!importedPolyfills.includes(functionName)) {

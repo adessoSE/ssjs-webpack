@@ -1,7 +1,6 @@
-import amp from 'lib/ampScript'
+import 'e360-ssjs-lib/lib_polyfill'
 
-const msg = amp.run(`
-VAR @response
-SET @response = "Hello World!"
-`);
-Write(msg);
+Object.defineProperty(Object, "foo", {value: 1})
+
+Write(Stringify([1,2,3].map(e => e * 2)))
+

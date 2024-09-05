@@ -1,7 +1,7 @@
 const htmlAsset = require('./htmlAsset');
 const packageAsset = require('./packageAsset');
 const dynamicPolyfills = require('./dynamicPolyfills');
-const { sources } = require('webpack');
+const { sources, webpack } = require('webpack');
 const minify = require('./minify');
 
 
@@ -25,11 +25,11 @@ class SsjsPlugin {
     };
   }
   apply(compiler) {
+
     const pluginName = SsjsPlugin.name;
-    const { webpack } = compiler;
-    const { Compilation } = webpack;
     this.options.isLandingPage = false;
     compiler.hooks.compilation.tap(pluginName, (compilation) => {
+
       compilation.hooks.buildModule.tap(pluginName, (module) => {
         if (module.resource) {
           this.options.isLandingPage |= /\.html$/.test(module.resource);

@@ -13,31 +13,4 @@ This refers to the polyfills that are included in the framework. You can of cour
 Using Polyfills breaks the core library and potentially other features. You can use WsProxy and Platform functinos as an alternative.
 
 **available polyfills:**
-* array
-    * every
-    * filter
-    * find
-    * forEach
-    * from
-    * includes
-    * indexOf
-    * isArray
-    * lastIndexOf
-    * map
-    * reduce
-    * reduceRight
-    * some
-    * splice
-* object
-    * create
-    * defineProperties
-    * keys
-    * values
-* string
-    * codePointAt
-    * endsWith
-    * padStart
-    * padEnd
-    * repeat
-    * startsWith
-    * trim
+Check the source code at [/framework/polyfills](https://github.com/adessoSE/ssjs-webpack/tree/main/framework/polyfills) for availabel polyfills.

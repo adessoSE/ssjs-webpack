@@ -21,18 +21,39 @@ input:
 
 output:
 ```javascript
-function arrayMap(callbackFn) {
-  var arr = [];
-  for (var i = 0; i < this.length; i++) {
-    arr.push(callbackFn(this[i], i, this));
-  }
-  return arr;
+function DynamicPolyfillCaller() {
+  this.getType = function (callee) {
+    if (callee === Array || Object.prototype.toString.call(callee) === '[object Array]') {
+      return 'array';
+    } else if (callee === Object || Object.prototype.toString.call(callee) === '[object Object]' && typeof callee !== 'function') {
+      return 'object';
+    } else if (callee === String || typeof callee === 'string') {
+      return 'string';
+    } else if (callee === Number || typeof callee === 'number') {
+      return 'number';
+    }
+    return false;
+  };
+  this._functions = {
+    map: {
+      array: function (callbackFn) {
+        var arr = [];
+        for (var i = 0; i < this.length; i++) {
+          arr.push(callbackFn(this[i], i, this));
+        }
+        return arr;
+      }
+    }
+  };
+  this.getFunction = function (callee, funcName) {
+    return this._functions[funcName][this.getType(callee)];
+  };
+  return this;
 }
-;
+var _dpf = new DynamicPolyfillCaller();
 /******/(function () {
   // webpackBootstrap
-  var __webpack_exports__ = {};
-  arrayMap.call([1, 2, 3], function (e) {
+  _dpf.getFunction([1, 2, 3], "map").call([1, 2, 3], function (e) {
     return e * 2;
   });
   /******/

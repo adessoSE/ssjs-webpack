@@ -28,22 +28,20 @@ function loadPolyfill(p) {
 }
 
 function loadPolyfillReplacement(func) {
-    return index
-        .filter(entry => func === entry.func)
-        .map(entry => ({ ...entry, ast: loadPolyfill(entry.p) }))
-        .map(entry => ({ ...entry, transformedAst: transformPolyfill(entry.ast) }))
-        .map(entry => ({
-            ...entry, transformedAst: types.objectProperty(
-                types.identifier(entry.func),
-                types.objectExpression(
-                    [types.objectProperty(
-                        types.identifier(entry.type),
-                        entry.transformedAst.declarations[0].init
-                    )]
+    return types.objectProperty(
+        types.identifier(func),
+        types.objectExpression(
+            index
+                .filter(entry => func === entry.func)
+                .map(entry => ({ ...entry, ast: loadPolyfill(entry.p) }))
+                .map(entry => ({ ...entry, transformedAst: transformPolyfill(entry.ast) }))
+                .map(entry => types.objectProperty(
+                    types.identifier(entry.type),
+                    entry.transformedAst.declarations[0].init
+                ))
+        )
+    )
 
-                )
-            )
-        }))
 }
 
 function transformPolyfillCall(callNode) {
@@ -52,9 +50,9 @@ function transformPolyfillCall(callNode) {
             types.memberExpression(
                 types.identifier("_dpf"), types.identifier("getFunction")
             ), [
-                callNode.callee.object,
-                types.stringLiteral(callNode.callee.property.name)
-            ]
+            callNode.callee.object,
+            types.stringLiteral(callNode.callee.property.name)
+        ]
         ), types.identifier('call')
     )
     const newArguments = [callNode.callee.object, ...callNode.arguments];

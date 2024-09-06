@@ -29,7 +29,7 @@ function dynamicPolyfills(js) {
                 const functionName = path.node.callee.property.name;
                 const replacements = loadPolyfillReplacement(functionName);
                 if (!importedPolyfills.includes(functionName)) {
-                    replacements.map(r => functionsObject.properties.push(r.transformedAst))
+                    functionsObject.properties.push(replacements);
                     importedPolyfills.push(functionName);
                 }
                 path.replaceWith(

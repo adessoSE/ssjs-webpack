@@ -48,14 +48,18 @@ function DynamicPolyfillCaller() {
   this.getFunction = function (callee, funcName) {
     return this._functions[funcName][this.getType(callee)];
   };
+  this._call = function (callee, funcName, args) {
+    var f = this.getFunction(callee, funcName);
+    return f.apply(callee, args);
+  };
   return this;
 }
-var _dpf = new DynamicPolyfillCaller();
+var _dpfc = new DynamicPolyfillCaller();
 /******/(function () {
   // webpackBootstrap
-  _dpf.getFunction([1, 2, 3], "map").call([1, 2, 3], function (e) {
+  _dpfc._call([1, 2, 3], "map", [function (e) {
     return e * 2;
-  });
+  }]);
   /******/
 })();
 ```

@@ -24,22 +24,10 @@ function DynamicPolyfillCaller(callee) {
     return this;
 }
 
-function _dpfcCall(callee, funcName) {
-    var funcBind = function(ctx) {
-        var fn = this;
-        return function() {
-            fn.apply(ctx, arguments);
-        };
-    };
+function _dpfcCall(callee, funcName, args) {
     var _dpfc = new DynamicPolyfillCaller(callee);
     var call = _dpfc.getFunction(funcName);
-    call.funcBind = function(ctx) {
-        var fn = this;
-        return function() {
-            fn.apply(ctx, arguments);
-        };
-    };
-    return call.funcBind(callee);
+    return call.apply(callee, args);
 }
 
 module.exports = { DynamicPolyfillCaller, _dpfcCall };

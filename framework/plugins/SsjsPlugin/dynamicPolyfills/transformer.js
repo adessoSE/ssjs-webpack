@@ -45,21 +45,17 @@ function loadPolyfillReplacement(func) {
 }
 
 function transformPolyfillCall(callNode) {
-    const newCallee = types.memberExpression(
-        types.callExpression(
-            types.memberExpression(
-                types.identifier("_dpf"), types.identifier("getFunction")
-            ), [
+    const newCallee = types.callExpression(
+        types.identifier('_dpfcCall'),
+        [
             callNode.callee.object,
             types.stringLiteral(callNode.callee.property.name)
         ]
-        ), types.identifier('call')
-    )
-    const newArguments = [callNode.callee.object, ...callNode.arguments];
+    );
     return types.expressionStatement(
         types.callExpression(
             newCallee,
-            newArguments
+            callNode.arguments
         )
     )
 }

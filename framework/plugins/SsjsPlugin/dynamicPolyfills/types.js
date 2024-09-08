@@ -1,7 +1,7 @@
 const index = require('./functionsIndex');
 const types = require('@babel/types');
 const { parse } = require('@babel/parser');
-const { DynamicPolyfillCaller, _dpfcCall } = require('./DynamicPolyfillCaller');
+const { DynamicPolyfillCaller } = require('./DynamicPolyfillCaller');
 
 
 function assignmentIsPolyfill(assignmentNode) {
@@ -60,7 +60,18 @@ function callerClass() {
 }
 
 function callerInstance() {
-    return parse(_dpfcCall.toString());
+    return types.variableDeclaration(
+        'var',
+        [
+            types.variableDeclarator(
+                types.identifier("_dpfc"),
+                types.newExpression(
+                    types.identifier("DynamicPolyfillCaller"),
+                    []
+                )
+            )
+        ]
+    )
 }
 
 module.exports = {

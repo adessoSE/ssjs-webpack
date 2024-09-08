@@ -1,33 +1,29 @@
-function DynamicPolyfillCaller(callee) {
-    
-    this.callee = callee;
+function DynamicPolyfillCaller() {
 
-    this.getType = function () {
-        if (this.callee === Array || Object.prototype.toString.call(this.callee) === '[object Array]') {
+    this.getType = function (callee) {
+        if (callee === Array || Object.prototype.toString.call(callee) === '[object Array]') {
             return 'array';
         }
-        else if (this.callee === Object || (Object.prototype.toString.call(this.callee) === '[object Object]' && typeof this.callee !== 'function')) {
+        else if (callee === Object || (Object.prototype.toString.call(callee) === '[object Object]' && typeof callee !== 'function')) {
             return 'object';
         }
-        else if (this.callee === String || typeof this.callee === 'string') {
+        else if (callee === String || typeof callee === 'string') {
             return 'string';
         }
-        else if (this.callee === Number || typeof this.callee === 'number') {
+        else if (callee === Number || typeof callee === 'number') {
             return 'number';
         }
         return false;
     }
     this._functions = {};
-    this.getFunction = function (funcName) {
-        return this._functions[funcName][this.getType()]
+    this.getFunction = function (callee, funcName) {
+        return this._functions[funcName][this.getType(callee)]
+    }
+    this._call = function (callee, funcName, args) {
+        var f = this.getFunction(callee, funcName);
+        return f.apply(callee, args)
     }
     return this;
 }
 
-function _dpfcCall(callee, funcName, args) {
-    var _dpfc = new DynamicPolyfillCaller(callee);
-    var call = _dpfc.getFunction(funcName);
-    return call.apply(callee, args);
-}
-
-module.exports = { DynamicPolyfillCaller, _dpfcCall };
+module.exports = { DynamicPolyfillCaller };

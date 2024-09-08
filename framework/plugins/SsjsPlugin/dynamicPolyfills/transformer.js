@@ -48,7 +48,9 @@ function transformPolyfillCall(callNode) {
 
     return types.expressionStatement(
         types.callExpression(
-            types.identifier('_dpfcCall'),
+            types.memberExpression(
+                types.identifier("_dpfc"), types.identifier("_call")
+            ),
             [callNode.callee.object, types.stringLiteral(callNode.callee.property.name), types.arrayExpression(callNode.arguments)]
         )
     )

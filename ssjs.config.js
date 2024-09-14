@@ -1,14 +1,14 @@
 const SsjsConfig = {
-  output: "main.js",
-  package: false,
-  html: true,
-  removeRawJS: false,
-  htmlName: "index.html",
-  packageName: "ssjs-package",
-  cloudpageCollectionName: "ssjs-cloudpage-collection",
-  codeResourceName: "ssjs-code-resource",
-  dynamicPolyfills: true,
-  minify: false
+  // output: "main.js",
+  // package: false,
+  // html: true,
+  // removeRawJS: true,
+  // htmlName: "index.html",
+  // packageName: "ssjs-package",
+  // cloudpageCollectionName: "ssjs-cloudpage-collection",
+  // codeResourceName: "ssjs-code-resource",
+  // dynamicPolyfills: false,
+  // minify: false
 };
 
 module.exports = SsjsConfig;

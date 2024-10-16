@@ -9,11 +9,10 @@ module.exports = (env) => {
   return {
     entry: ["./src/index.js"],
     output: {
-      filename: SsjsConfig.output ,
+      filename: SsjsConfig.output,
       path: path.resolve(__dirname, "../dist"),
-      clean: true,
     },
-    plugins: [new SsjsPlugin({...SsjsConfig, ...env}), new Dotenv()],
+    plugins: [new SsjsPlugin({ ...SsjsConfig, ...env }), new Dotenv()],
     mode: "none",
     optimization: {
       concatenateModules: true,
@@ -47,7 +46,7 @@ module.exports = (env) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "./framework/ampScriptLoader.js",
+              loader: "./framework/loaders/ampScriptLoader.js",
               options: {},
             },
           ],

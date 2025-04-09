@@ -1,8 +1,9 @@
 const htmlAsset = require('./htmlAsset');
 const packageAsset = require('./packageAsset');
 const dynamicPolyfills = require('./dynamicPolyfills');
-const { sources, webpack } = require('webpack');
+const { sources } = require('webpack');
 const minify = require('./minify');
+const fs = require('fs');
 
 
 class SsjsPlugin {
@@ -75,7 +76,7 @@ class SsjsPlugin {
       );
 
       compilation.hooks.finishModules.tap(pluginName, (modules) => {
-        
+
         const mods = {};
         for (const module of modules) {
           const mod = module.rawRequest;
@@ -92,7 +93,10 @@ class SsjsPlugin {
 
         const nodes = Object.keys(mods).map(mod => `${mod}[${mod}]`).join("\n");
         const links = Object.keys(mods).map(mod => Array.from(mods[mod]).map(dep => `${mod} --- ${dep}`).join("\n")).join("\n");
-        const graph = 'flowchart TB\n' + nodes + '\n'+ links;
+        const graph = 'flowchart TB\n' + nodes + '\n' + links;
+        fs.writeFile('dependencies.md', "```mermaid\n" + graph + "```", function (err) {
+          console.log(err)
+        })
         console.log(graph)
       });
     });

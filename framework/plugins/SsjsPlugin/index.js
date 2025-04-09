@@ -73,6 +73,18 @@ class SsjsPlugin {
 
         }
       );
+
+      compilation.hooks.finishModules.tap(pluginName, (modules) => {
+        for (const module of modules) {
+          const deps = compilation.moduleGraph.getOutgoingConnections(module);
+          console.log(`Module: ${module.resource}`);
+          deps.forEach(dep => {
+            if (dep.module) {
+              console.log(`  depends on: ${dep.module.resource}`);
+            }
+          });
+        }
+      });
     });
 
   }

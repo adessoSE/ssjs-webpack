@@ -75,15 +75,25 @@ class SsjsPlugin {
       );
 
       compilation.hooks.finishModules.tap(pluginName, (modules) => {
+        
+        const mods = {};
         for (const module of modules) {
+          const mod = module.rawRequest;
+          if (!mods[mod]) {
+            mods[mod] = new Set();
+          }
           const deps = compilation.moduleGraph.getOutgoingConnections(module);
-          console.log(`Module: ${module.resource}`);
           deps.forEach(dep => {
             if (dep.module) {
-              console.log(`  depends on: ${dep.module.resource}`);
+              mods[mod].add(dep.module.rawRequest);
             }
           });
         }
+
+        const nodes = Object.keys(mods).map(mod => `${mod}[${mod}]`).join("\n");
+        const links = Object.keys(mods).map(mod => Array.from(mods[mod]).map(dep => `${mod} --- ${dep}`).join("\n")).join("\n");
+        const graph = 'flowchart TB\n' + nodes + '\n'+ links;
+        console.log(graph)
       });
     });
 

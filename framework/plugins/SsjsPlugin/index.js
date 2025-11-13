@@ -44,7 +44,6 @@ class SsjsPlugin {
           for (const asset in assets) {
             let js = compilation.assets[asset].source();
             if (this.options.dynamicPolyfills) {
-              console.warn("\nWARNING:\nDynamic Polyfills is an experimental feature. Check the documentation for further information.\n\n")
               js = dynamicPolyfills(js);
             }
             if (this.options.minify && this.options.minify != 'false') {
